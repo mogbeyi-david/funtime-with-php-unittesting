@@ -34,4 +34,14 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $user->setLastName("Mogbeyiteren");
         $this->assertEquals($user->getFullName(), "Owumi Mogbeyiteren");
     }
+
+    public function testNameTrim()
+    {
+        $user = new User();
+        $user->setFirstName("    Biola");
+        $user->setLastName("Wahala     ");
+
+        $this->assertEquals($user->getFirstName(), "Biola");
+        $this->assertEquals($user->getLastName(), "Wahala");
+    }
 }
