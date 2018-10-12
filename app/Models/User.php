@@ -12,6 +12,7 @@ class User
 {
     protected $firstName;
     protected $lastName;
+    protected $email;
 
     public function setFirstName($firstName)
     {
@@ -39,5 +40,24 @@ class User
     public function getFullName()
     {
         return "$this->firstName $this->lastName";
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getEmailDetails()
+    {
+        return [
+            "firstname" => $this->getFirstName(),
+            "lastname" => $this->getLastName(),
+            "email" => $this->getEmail()
+        ];
     }
 }

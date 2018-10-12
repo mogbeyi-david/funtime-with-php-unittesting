@@ -44,4 +44,28 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($user->getFirstName(), "Biola");
         $this->assertEquals($user->getLastName(), "Wahala");
     }
+
+    public function testGetEmail()
+    {
+        $user = new User();
+        $user->setEmail("mogbeyidavid@gmail.com");
+        $this->assertEquals($user->getEmail(), "mogbeyidavid@gmail.com");
+    }
+
+    public function testGetEmailDetails()
+    {
+        $user = new User();
+        $user->setFirstName("David");
+        $user->setLastName("Owumi");
+        $user->setEmail("mogbeyidavid@gmail.com");
+        $emailDetails = $user->getEmailDetails();
+
+        $this->assertArrayHasKey("firstname", $emailDetails);
+        $this->assertArrayHasKey("lastname", $emailDetails);
+        $this->assertArrayHasKey("email", $emailDetails);
+
+        $this->assertEquals($emailDetails['firstname'], "David");
+        $this->assertEquals($emailDetails['lastname'], "Owumi");
+        $this->assertEquals($emailDetails['email'], "mogbeyidavid@gmail.com");
+    }
 }
