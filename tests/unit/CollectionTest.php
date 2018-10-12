@@ -18,4 +18,14 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         $this->assertEmpty($collection->get());
     }
 
+    public function testCount()
+    {
+        $collection = new Collection([
+            "one",
+            "two",
+            "three"
+        ]);
+
+        $this->assertEquals(3, $collection->count());
+    }
 }
