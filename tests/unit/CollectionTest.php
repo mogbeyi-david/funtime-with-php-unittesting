@@ -54,4 +54,23 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $items);
         $this->assertInstanceOf(\ArrayIterator::class, $collection->getIterator());
     }
+
+    public function test_can_add_to_existing_collection()
+    {
+        $collection = new Collection(["one", "two"]);
+        $collection->add(["three"]);
+
+        $this->assertCount(3, $collection->get());
+    }
+
+    public function test_collection_can_be_merged_with_another_collection()
+    {
+        $firstCollection = new Collection(["one", "two", "three"]);
+        $secondCollection = new Collection(["four", "five", "six"]);
+
+        $firstCollection->merge($secondCollection);
+
+        $this->assertEquals(6, $firstCollection->count());
+        $this->assertCount(6, $firstCollection->get());
+    }
 }

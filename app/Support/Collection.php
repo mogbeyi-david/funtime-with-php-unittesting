@@ -7,13 +7,14 @@
  */
 
 namespace App\Support;
+
 use ArrayIterator;
 
 class Collection implements \IteratorAggregate
 {
     protected $items = [];
 
-    public function __construct(array $items=[])
+    public function __construct(array $items = [])
     {
         $this->items = $items;
     }
@@ -31,5 +32,15 @@ class Collection implements \IteratorAggregate
     public function getIterator()
     {
         return new ArrayIterator($this->items);
+    }
+
+    public function add($items)
+    {
+        $this->items = array_merge($this->items, $items);
+    }
+
+    public function merge(Collection $collection)
+    {
+        $this->add($collection->get());
     }
 }
