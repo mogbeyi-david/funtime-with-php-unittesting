@@ -36,4 +36,10 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($collection->get()[1], "two");
         $this->assertEquals($collection->get()[2], "three");
     }
+
+    public function testIfCollectionIsInstanceOfIteratorAggregate()
+    {
+        $collection = new Collection();
+        $this->assertInstanceOf(\IteratorAggregate::class, $collection);
+    }
 }
