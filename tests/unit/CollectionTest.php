@@ -42,4 +42,16 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         $collection = new Collection();
         $this->assertInstanceOf(\IteratorAggregate::class, $collection);
     }
+
+    public function test_collection_can_be_iterated()
+    {
+        $collection = new Collection(["one", "two", "three"]);
+        $items = [];
+        foreach ($collection as $item) {
+            $items[] = $item;
+        }
+
+        $this->assertCount(3, $items);
+        $this->assertInstanceOf(\ArrayIterator::class, $collection->getIterator());
+    }
 }
