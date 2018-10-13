@@ -84,4 +84,16 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         $this->assertInternalType('string', $collection->toJson());
         $this->assertEquals('{"name":"David Mogbeyi","email":"mogbeyidavid@gmail.com"}', $collection->toJson());
     }
+
+    public function test_json_encoding_a_collection_object_returns_json()
+    {
+        $collection = new Collection([
+            "name" => "David Mogbeyi",
+            "email" => "mogbeyidavid@gmail.com"
+        ]);
+
+        $encoded = json_encode($collection);
+        $this->assertInternalType('string', $encoded);
+        $this->assertEquals('{"name":"David Mogbeyi","email":"mogbeyidavid@gmail.com"}', $encoded);
+    }
 }
