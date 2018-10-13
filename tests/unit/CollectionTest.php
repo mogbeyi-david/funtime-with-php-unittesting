@@ -73,4 +73,14 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(6, $firstCollection->count());
         $this->assertCount(6, $firstCollection->get());
     }
+
+    public function test_returns_json_encoded_items()
+    {
+        $collection = new Collection([
+            "name" => "David Mogbeyi",
+            "email" => "mogbeyidavid@gmail.com"
+        ]);
+
+        $this->assertEquals('{"name":"David Mogbeyi","email":"mogbeyidavid@gmail.com"}', $collection->toJson());
+    }
 }
