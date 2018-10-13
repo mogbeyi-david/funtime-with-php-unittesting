@@ -81,6 +81,7 @@ class CollectionTest extends \PHPUnit\Framework\TestCase
             "email" => "mogbeyidavid@gmail.com"
         ]);
 
+        $this->assertInternalType('string', $collection->toJson());
         $this->assertEquals('{"name":"David Mogbeyi","email":"mogbeyidavid@gmail.com"}', $collection->toJson());
     }
 }
